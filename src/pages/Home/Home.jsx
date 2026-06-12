@@ -31,6 +31,12 @@ function Home() {
     },
   ];
 
+  addExpense(fakeDatas) {
+    <div>
+        ....fakeDatas,
+        [...fakeDatas, newExpense ]
+    </div>
+  }
 
 
   return (

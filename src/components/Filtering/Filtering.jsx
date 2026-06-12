@@ -6,11 +6,7 @@ function Filtering() {
   const [inputAmount, setInputAmount] = useState("");
   
 
-  addExpense() {
-    <div>
-        {/* what do i want from the add button */}
-    </div>
-  }
+  
 
   return (
     <div>
@@ -36,7 +32,5 @@ function Filtering() {
 
 export default Filtering;
 {
-  /*i need to get the users input adn then save that in a 
-statement, after whitch just make the list item the 
-statement*/
+  /*give the input amount and number to the list*/
 }
