@@ -22,6 +22,8 @@ function Cards({ fakeDatas }) {
         <p className="thisMSpendP">This Month</p>
         <p className="thisMSpendN">${total}</p>
       </div>
+
+      
     </div>
   );
 }

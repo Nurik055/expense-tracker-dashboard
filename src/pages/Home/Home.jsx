@@ -1,6 +1,7 @@
 import "../Home/Home.css";
 import ListExpenses from "../../components/ListExpenses/ListExpenses";
 import Cards from "../../components/Cards/Cards"
+import Filtering from "../../components/Filtering/Filtering"
 
 function Home() {
   const fakeDatas = [
@@ -35,6 +36,7 @@ function Home() {
   return (
     <div>
       <Cards fakeDatas={fakeDatas}></Cards>
+      <Filtering></Filtering>
       <ListExpenses fakeDatas={fakeDatas}></ListExpenses>
     </div>
   );
