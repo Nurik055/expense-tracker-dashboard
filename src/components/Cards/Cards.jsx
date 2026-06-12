@@ -1,53 +1,29 @@
 import "../Cards/Cards.css";
 
-function Cards({fakeDatas}) {
-  
-  {/* this month expenses */}
-  
+function Cards({ fakeDatas }) {
+
   const today = new Date();
   const currentMonth = today.getMonth();
-  function filterMonth(fakeData) {
-      return fakeData.month === currentMonth;
+
+  function filterMonth(expense) {
+    return Number(expense.month) === currentMonth;
   }
+
   const result = fakeDatas.filter(filterMonth);
-  
-  {/* this month expenses */}
 
-    
-  
+  const total = result.reduce((sum, expense) => {
+    return sum + expense.amount;
+  }, 0);
+  {/* expense is one item fome the array */}
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  function expenses() {}
-
-  function avgExpenses() {}
-
-  function remainingBudget() {}
-
-  return <div></div>;
+  return (
+    <div>
+      <div className="thisMSpend">
+        <p className="thisMSpendP">This Month</p>
+        <p className="thisMSpendN">${total}</p>
+      </div>
+    </div>
+  );
 }
 
 export default Cards;
