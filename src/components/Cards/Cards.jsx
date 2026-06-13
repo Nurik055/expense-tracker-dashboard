@@ -1,6 +1,6 @@
 import "../Cards/Cards.css";
 
-function Cards({ fakeDatas }) {
+function Cards({ expenses }) {
 
   const today = new Date();
   const currentMonth = today.getMonth();
@@ -9,7 +9,7 @@ function Cards({ fakeDatas }) {
     return Number(expense.month) === currentMonth;
   }
 
-  const result = fakeDatas.filter(filterMonth);
+  const result = expenses.filter(filterMonth);
 
   const total = result.reduce((sum, expense) => {
     return sum + expense.amount;

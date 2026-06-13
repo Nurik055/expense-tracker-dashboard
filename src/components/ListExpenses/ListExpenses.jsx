@@ -1,14 +1,14 @@
 import "../ListExpenses/ListExpenses.css"
 import Expenses from "../Expenses/Expenses"
 
-function ListExpenses ({ fakeDatas }) {
+function ListExpenses ({ expenses }) {
 
 
     return(
         
         <div>
-            {fakeDatas.map((fakeD) => (
-                <Expenses key={fakeD.id} fakeData={fakeD}></Expenses>
+            {expenses.map((expense) => (
+                <Expenses key={expense.id} expenses={expense}></Expenses>
             )) }
             
         </div>

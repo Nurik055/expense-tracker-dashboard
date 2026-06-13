@@ -1,13 +1,13 @@
 import ListExpenses from "../ListExpenses/ListExpenses";
 import { useState } from "react";
 
-function Filtering() {
+function Filtering({addExpense}) {
   const [inputName, setInputName] = useState("");
   const [inputAmount, setInputAmount] = useState("");
   
-
-  
-
+  function callingAddExpense(inputName, inputAmount) {
+    addExpense({ name: inputName, amount: inputAmount })
+  }
   return (
     <div>
       <input 
@@ -22,7 +22,7 @@ function Filtering() {
       ></input>
       <button
         className="addingButton"
-        onClick={addExpense}
+        onClick={callingAddExpense}
       >
         Add
       </button>

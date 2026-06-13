@@ -1,8 +1,8 @@
-function Expenses({ fakeData }) {
+function Expenses({ expense }) {
   return (
     <div>
-      <p>{fakeData.name}</p>
-      <p>{fakeData.amount}</p>
+      <p>{expense.name}</p>
+      <p>{expense.amount}</p>
     </div>
   );
 }
