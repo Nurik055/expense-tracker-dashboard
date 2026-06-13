@@ -8,7 +8,7 @@ function ListExpenses ({ expenses }) {
         
         <div>
             {expenses.map((expense) => (
-                <Expenses key={expense.id} expenses={expense}></Expenses>
+                <Expenses key={expense.id} expense={expense}></Expenses>
             )) }
             
         </div>

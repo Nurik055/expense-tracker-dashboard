@@ -22,7 +22,7 @@ function Filtering({addExpense}) {
       ></input>
       <button
         className="addingButton"
-        onClick={callingAddExpense}
+        onClick={() => callingAddExpense(inputName, inputAmount)}
       >
         Add
       </button>

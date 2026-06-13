@@ -9,7 +9,7 @@ function Cards({ expenses }) {
     return Number(expense.month) === currentMonth;
   }
 
-  const result = expenses.filter(filterMonth);
+  const result = (expenses || []).filter(filterMonth);
 
   const total = result.reduce((sum, expense) => {
     return sum + expense.amount;
