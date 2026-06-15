@@ -5,7 +5,7 @@ function Cards({ expenses }) {
   const today = new Date();
   const currentMonth = today.getMonth();
 
-  function filterMonth(expense) {
+  function filterMonth(expenses) {
     return Number(expense.month) === currentMonth;
   }
 

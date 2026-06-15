@@ -6,9 +6,10 @@ import { useState } from "react";
 
 function Home() {
   const [expenses, setExpenses] = useState([]);
-
+const today = new Date();
+  const currentMonth = today.getMonth();
   const addExpense = (newExpense) => {
-    setExpenses((prev) => [...prev, { ...newExpense, id: Date.now() }]);
+    setExpenses((prev) => [...prev, { ...newExpense, id: Date.now(), month: currentMonth  }]);
   };
 
   return (
