@@ -1,20 +1,21 @@
 import "../Cards/Cards.css";
 
 function Cards({ expenses }) {
-
   const today = new Date();
   const currentMonth = today.getMonth();
 
   function filterMonth(expenses) {
-    return Number(expense.month) === currentMonth;
+    return Number(expenses.month) === currentMonth;
   }
 
   const result = (expenses || []).filter(filterMonth);
 
   const total = result.reduce((sum, expense) => {
-    return sum + expense.amount;
+    return sum + Number(expense.amount);
   }, 0);
-  {/* expense is one item fome the array */}
+  {
+    /* expense is one item fome the array */
+  }
 
   return (
     <div>
@@ -22,8 +23,6 @@ function Cards({ expenses }) {
         <p className="thisMSpendP">This Month</p>
         <p className="thisMSpendN">${total}</p>
       </div>
-
-      
     </div>
   );
 }
