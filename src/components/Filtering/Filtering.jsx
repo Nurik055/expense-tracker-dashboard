@@ -1,7 +1,9 @@
 import ListExpenses from "../ListExpenses/ListExpenses";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Filtering({ addExpense }) {
+  const navigate = useNavigate();
   const [inputName, setInputName] = useState("");
   const [inputAmount, setInputAmount] = useState("");
   const [inputDescrip, setInputDescrip] = useState("");
@@ -14,9 +16,11 @@ function Filtering({ addExpense }) {
       description: inputDescrip,
       category: category,
     });
+    navigate("/");
   }
   return (
     <div>
+      <h1>Add Expense</h1>
       <input
         className="addingInput"
         placeholder="Your expense"
