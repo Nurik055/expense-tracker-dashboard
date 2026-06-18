@@ -16,6 +16,7 @@ function Cards({ expenses }) {
   {
     /* expense is one item fome the array */
   }
+  
 
   return (
     <div>

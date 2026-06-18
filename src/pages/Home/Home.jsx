@@ -3,19 +3,18 @@ import ListExpenses from "../../components/ListExpenses/ListExpenses";
 import Cards from "../../components/Cards/Cards";
 import Filtering from "../../components/Filtering/Filtering";
 import { useState } from "react";
+import {Link} from "react-router-dom"
 
-function Home() {
-  const [expenses, setExpenses] = useState([]);
-const today = new Date();
-  const currentMonth = today.getMonth();
-  const addExpense = (newExpense) => {
-    setExpenses((prev) => [...prev, { ...newExpense, id: Date.now(), month: currentMonth  }]);
-  };
+function Home({expenses}) {
+  
 
   return (
     <div>
+      <Link to="/add-expense-filtering" >
+      <button>Add Expense</button>
+      </Link>
       <Cards expenses={expenses}></Cards>
-      <Filtering addExpense={addExpense}></Filtering>
+      
       <ListExpenses expenses={expenses}></ListExpenses>
     </div>
   );

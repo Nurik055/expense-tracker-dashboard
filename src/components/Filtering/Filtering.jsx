@@ -5,7 +5,7 @@ function Filtering({ addExpense }) {
   const [inputName, setInputName] = useState("");
   const [inputAmount, setInputAmount] = useState("");
   const [inputDescrip, setInputDescrip] = useState("");
-  const [category, setCategory] = useState("")
+  const [category, setCategory] = useState("");
 
   function callingAddExpense(inputName, inputAmount) {
     addExpense({
@@ -45,7 +45,6 @@ function Filtering({ addExpense }) {
       >
         Add
       </button>
-      
     </div>
   );
 }
