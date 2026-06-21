@@ -10,12 +10,13 @@ function Home({expenses}) {
 
   return (
     <div>
-      <Link to="/add-expense-filtering" >
-      <button>Add Expense</button>
-      </Link>
+      
       <Cards expenses={expenses}></Cards>
       
       <ListExpenses expenses={expenses}></ListExpenses>
+      <Link to="/add-expense-filtering" >
+      <button>Add Expense</button>
+      </Link>
     </div>
   );
 }
