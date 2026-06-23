@@ -1,16 +1,38 @@
-# React + Vite
+# Expense Tracker Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React app for tracking personal expenses and managing a monthly budget.
 
-Currently, two official plugins are available:
+It lets you add expenses, delete them, filter by month, and see how much of your budget is left.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Add and remove expenses  
+- View all expenses in a list  
+- Filter expenses by month  
+- Set a monthly budget  
+- Track spending vs budget
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Built With
 
-## Expanding the ESLint configuration
+React, JavaScript (ES6+), CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Why I Built This
+
+I built this project to practice React fundamentals by creating something close to a real-world use case instead of just following tutorials.
+
+## What I Learned
+
+- Breaking UI into React components  
+- Using `useState` for state management  
+- Passing data with props  
+- Handling forms in React  
+- Working with arrays (`map`, `filter`)  
+- Thinking in terms of UI state
+
+## Setup
+
+```bash
+git clone <repository-url>
+cd expense-tracker-dashboard
+npm install
+npm run dev

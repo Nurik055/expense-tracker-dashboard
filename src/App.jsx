@@ -14,12 +14,21 @@ export default function App() {
     ]);
   };
 
+  const [budget, setBudget] = useState(0);
 
 
-  
   return (
     <Routes>
-      <Route path="/" element={<Home addExpense={addExpense} expenses={expenses}/>} />
+      <Route
+        path="/"
+        element={
+          <Home
+            expenses={expenses}
+            budget={budget}
+            setBudget={setBudget}
+          />
+        }
+      />
       <Route
         path="/add-expense-filtering"
         element={<Filtering addExpense={addExpense} />}
