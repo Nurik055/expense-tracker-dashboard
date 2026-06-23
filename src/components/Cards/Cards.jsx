@@ -1,44 +1,16 @@
 import "../Cards/Cards.css";
 import { useState } from "react";
 
-function Cards({ expenses }) {
-  const today = new Date();
-  const currentMonth = today.getMonth();
-
-  function filterMonth(expenses) {
-    return Number(expenses.month) === currentMonth;
-  }
-
-  const result = (expenses || []).filter(filterMonth);
-
-  const total = result.reduce((sum, expense) => {
-    return sum + Number(expense.amount);
-  }, 0);
-  {
-    /* expense is one item fome the array */
-  }
+function Cards({ expenses, budget, setBudget, budgetFunction, isEditing, total, addExpense}) {
   
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [budget, setBudget] = useState(0);
   
-  function budgetFunction(e) {
-    
-    if(!isEditing) {
-        setIsEditing(true);
-        
-      }
-      else{
-        setIsEditing(false);
-      }
-    
-  }
-  
+
 
   return (
     <div>
       <div className="thisMSpend">
-        <p className="thisMSpendP">This Month</p>
+        <p className="thisMSpendP">This Month Spend:</p>
         <p className="thisMSpendN">${total}</p>
       </div>
 
@@ -46,8 +18,11 @@ function Cards({ expenses }) {
         {isEditing ? (
           <input value={budget} onChange={(e)=>setBudget(e.target.value)}></input>
         ) : (
-          <p>{budget}</p>
+          <p>Budget: {addExpense.amount-budget}</p>
         )}
+      </div>
+      <div className="remaining">
+
       </div>
     </div>
   );

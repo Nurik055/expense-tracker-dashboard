@@ -33,14 +33,14 @@ function Filtering({ addExpense }) {
       <h1>Add Expense</h1>
 
       <input
-        className="addingInput"
+        className="addingInputName"
         placeholder="Your expense"
         onChange={(e) => setInputName(e.target.value)}
       />
       
 
       <input
-        className="addingInputN"
+        className="addingInputNumber"
         type="number"
         placeholder="$"
         onChange={(e) => setInputAmount(e.target.value)}

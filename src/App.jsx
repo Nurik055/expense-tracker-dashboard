@@ -13,10 +13,13 @@ export default function App() {
       { ...newExpense, id: Date.now(), month: currentMonth },
     ]);
   };
+
+
+
   
   return (
     <Routes>
-      <Route path="/" element={<Home expenses={expenses}/>} />
+      <Route path="/" element={<Home addExpense={addExpense} expenses={expenses}/>} />
       <Route
         path="/add-expense-filtering"
         element={<Filtering addExpense={addExpense} />}
