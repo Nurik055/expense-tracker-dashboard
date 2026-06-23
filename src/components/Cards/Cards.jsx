@@ -1,7 +1,7 @@
 import "../Cards/Cards.css";
 import { useState } from "react";
 
-function Cards({ expenses, budget, setBudget, budgetFunction, isEditing, total, addExpense}) {
+function Cards({ expenses, budget, setBudget, budgetFunction, isEditing, total}) {
   
 
   
@@ -18,7 +18,7 @@ function Cards({ expenses, budget, setBudget, budgetFunction, isEditing, total, 
         {isEditing ? (
           <input value={budget} onChange={(e)=>setBudget(e.target.value)}></input>
         ) : (
-          <p>Budget: {addExpense.amount-budget}</p>
+          <p>Budget: {budget}</p>
         )}
       </div>
       <div className="remaining">
