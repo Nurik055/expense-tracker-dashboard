@@ -1,8 +1,10 @@
 import "../Cards/Cards.css";
 import { useState } from "react";
 
-function Cards({expenses, budget, setBudget}) {
-    {/* this month and total */}
+function Cards({ expenses, budget, setBudget }) {
+  {
+    /* this month and total */
+  }
   const today = new Date();
   const currentMonth = today.getMonth();
 
@@ -16,8 +18,9 @@ function Cards({expenses, budget, setBudget}) {
     return sum + Number(expense.amount);
   }, 0);
 
-
-  {/* budget functions and updating it */}
+  {
+    /* budget functions and updating it */
+  }
   const [isEditing, setIsEditing] = useState(false);
 
   function budgetFunction(e) {
@@ -26,20 +29,24 @@ function Cards({expenses, budget, setBudget}) {
     } else {
       setIsEditing(false);
     }
-  } 
-  const expensePercent = (total/budget)* 100;
-
+  }
+  {
+    /* the dashboard and its text */
+  }
+  const expensePercent = (total / budget) * 100;
   const remaining = budget - total;
-  const overTheBudget = total-budget;
+  const overTheBudget = total - budget;
   let spendingDifference = "";
-  if(remaining > 0) {
+  if (remaining > 0) {
     spendingDifference = <p className="remainingBudget">{remaining} remains</p>;
-  }else if(remaining === 0){
-    spendingDifference = <p></p>
+  } else if (remaining === 0) {
+    spendingDifference = <p></p>;
+  } else {
+    spendingDifference = (
+      <p className="overTheBudget">{overTheBudget} over the budget</p>
+    );
   }
-  else {
-    spendingDifference = <p className="overTheBudget">{overTheBudget} over the budget</p>;
-  }
+
   return (
     <div>
       <div className="thisMSpend">
@@ -55,19 +62,24 @@ function Cards({expenses, budget, setBudget}) {
           ></input>
         ) : (
           <>
-          <p>Budget: {budget}</p>
-          <p>Remaining: {remaining}</p>
+            <p>Budget: {budget}</p>
           </>
-          
         )}
       </div>
 
-
       <div className="budgetDashboardContainer">
         <p>Monthly budget</p>
-        <p>${total} of ${budget} spend</p>
+        <p>
+          ${total} of ${budget} spend
+        </p>
         <div>{spendingDifference}</div>
-        <div className="budgetDashboard"></div>
+
+        <div className="budgetDashboard" style={{ width: "100%" }}>
+          <div
+            className="spendingsDashboard"
+            style={{ width: `${expensePercent}%` }}
+          ></div>
+        </div>
       </div>
     </div>
   );

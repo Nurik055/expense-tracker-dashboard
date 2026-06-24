@@ -1,3 +1,24 @@
 .budgetCard {
     background-color: pink;
 }
+.budgetDashboardContainer {
+    background-color: red;
+}
+.thisMSpend {
+    background-color: green;
+}
+.budgetDashboard {
+    height: 30px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(129, 129, 129);
+    border-radius: 20px;
+    position: relative;
+
+}
+.spendingsDashboard {
+    position: absolute;
+    background-color: green;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 20px
+}
