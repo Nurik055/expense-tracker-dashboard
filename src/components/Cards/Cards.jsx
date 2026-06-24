@@ -26,6 +26,19 @@ function Cards({expenses, budget, setBudget}) {
     } else {
       setIsEditing(false);
     }
+  } 
+  const expensePercent = (total/budget)* 100;
+
+  const remaining = budget - total;
+  const overTheBudget = total-budget;
+  let spendingDifference = "";
+  if(remaining > 0) {
+    spendingDifference = <p className="remainingBudget">{remaining} remains</p>;
+  }else if(remaining === 0){
+    spendingDifference = <p></p>
+  }
+  else {
+    spendingDifference = <p className="overTheBudget">{overTheBudget} over the budget</p>;
   }
   return (
     <div>
@@ -43,12 +56,19 @@ function Cards({expenses, budget, setBudget}) {
         ) : (
           <>
           <p>Budget: {budget}</p>
-          <p>Remaining: ${budget - total}</p>
+          <p>Remaining: {remaining}</p>
           </>
           
         )}
       </div>
-      <div className="remaining"></div>
+
+
+      <div className="budgetDashboardContainer">
+        <p>Monthly budget</p>
+        <p>${total} of ${budget} spend</p>
+        <div>{spendingDifference}</div>
+        <div className="budgetDashboard"></div>
+      </div>
     </div>
   );
 }
