@@ -5,7 +5,9 @@ import Filtering from "../../components/Filtering/Filtering";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Home({ expenses, budget, setBudget }) {
+function Home({ expenses, budget, setBudget, setExpenses }) {
+
+
   return (
     <div>
       <Cards
@@ -14,7 +16,7 @@ function Home({ expenses, budget, setBudget }) {
         setBudget={setBudget}
       ></Cards>
 
-      <ListExpenses expenses={expenses}></ListExpenses>
+      <ListExpenses expenses={expenses} setExpenses={setExpenses}></ListExpenses>
       <Link to="/add-expense-filtering">
         <button>Add Expense</button>
       </Link>

@@ -1,14 +1,15 @@
 import "../ListExpenses/ListExpenses.css"
 import Expenses from "../Expenses/Expenses"
 
-function ListExpenses ({ expenses }) {
+function ListExpenses ({ expenses, setExpenses }) {
 
 
+    
     return(
         
         <div>
             {expenses.map((expense) => (
-                <Expenses key={expense.id} expense={expense}></Expenses>
+            <Expenses key={expense.id} expense={expense} setExpenses={setExpenses}></Expenses>
             )) }
             
         </div>

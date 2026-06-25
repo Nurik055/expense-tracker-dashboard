@@ -26,6 +26,7 @@ export default function App() {
             expenses={expenses}
             budget={budget}
             setBudget={setBudget}
+            setExpenses={setExpenses}
           />
         }
       />
