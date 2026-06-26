@@ -1,0 +1,7 @@
+.filterContainer {
+    background-color: rgb(232, 255, 59);
+    height: 100px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 15px;
+}

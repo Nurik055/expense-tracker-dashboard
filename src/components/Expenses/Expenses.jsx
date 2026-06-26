@@ -1,10 +1,8 @@
-import "../Expenses/Expenses.css"
+import "../Expenses/Expenses.css";
 function Expenses({ expense, setExpenses }) {
   const thisExpense = expense.id;
   function removeExpense() {
-    
-    setExpenses((prev)=> prev.filter((e)=>e.id !== thisExpense))
-
+    setExpenses((prev) => prev.filter((e) => e.id !== thisExpense));
   }
   return (
     <div className="expensesContainer">

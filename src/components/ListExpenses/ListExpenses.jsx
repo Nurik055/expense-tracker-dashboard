@@ -1,7 +1,7 @@
 import "../ListExpenses/ListExpenses.css"
 import Expenses from "../Expenses/Expenses"
 
-function ListExpenses ({ expenses, setExpenses }) {
+function ListExpenses ({ expenses, setExpenses, expenseEqual }) {
 
 
     

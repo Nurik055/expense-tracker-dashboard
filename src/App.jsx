@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../src/pages/Home/Home";
 import { useState } from "react";
-import Filtering from "../src/components/Filtering/Filtering";
+import AddingExpense from "../src/components/AddingExpense/AddingExpense"
 
 export default function App() {
   const [expenses, setExpenses] = useState([]);
@@ -16,23 +16,33 @@ export default function App() {
 
   const [budget, setBudget] = useState(0);
 
-
+  const [userInput, setUserInput] = useState("");
+    
+    const expenseEqual = expenses.filter((expense)=>{
+        return(
+            expense.name===userInput
+        )
+        
+    })
   return (
     <Routes>
       <Route
         path="/"
         element={
           <Home
-            expenses={expenses}
+            expenses={userInput === "" ? expenses : expenseEqual}
             budget={budget}
             setBudget={setBudget}
             setExpenses={setExpenses}
+            userInput={userInput}
+            setUserInput={setUserInput}
+            expenseEqual={expenseEqual}
           />
         }
       />
       <Route
         path="/add-expense-filtering"
-        element={<Filtering addExpense={addExpense} />}
+        element={<AddingExpense addExpense={addExpense} />}
       />
     </Routes>
   );
