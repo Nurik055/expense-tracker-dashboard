@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../src/pages/Home/Home";
 import { useState } from "react";
-import AddingExpense from "../src/components/AddingExpense/AddingExpense"
+import AddingExpense from "../src/components/AddingExpense/AddingExpense";
 
 export default function App() {
   const [expenses, setExpenses] = useState([]);
@@ -17,26 +17,41 @@ export default function App() {
   const [budget, setBudget] = useState(0);
 
   const [userInput, setUserInput] = useState("");
+  const [select, setSelect] = useState("");
+
+  const expenseEqual = expenses.filter((expense) => {
+    return expense.name === userInput;
+  });
+
+  
+  const selectedJobs = expenses.filter((expense) => {
     
-    const expenseEqual = expenses.filter((expense)=>{
-        return(
-            expense.name===userInput
-        )
-        
-    })
+    if(select === "thisMonth") {
+      let selectedJob = expense.month = currentMonth
+    }
+    else {
+      let selectedJob = expense
+    }
+  
+    return expense.month === select
+  })
   return (
     <Routes>
       <Route
         path="/"
         element={
           <Home
-            expenses={userInput === "" ? expenses : expenseEqual}
+            expenses={userInput === "" ? expenses : expenseEqual : select}
+            setExpenses={setExpenses}
+            today={today}
+            currentMonth={currentMonth}
             budget={budget}
             setBudget={setBudget}
-            setExpenses={setExpenses}
             userInput={userInput}
             setUserInput={setUserInput}
             expenseEqual={expenseEqual}
+            select={select}
+            setSelect={setSelect}
           />
         }
       />
