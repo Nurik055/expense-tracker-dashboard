@@ -7,6 +7,7 @@ export default function App() {
   const [expenses, setExpenses] = useState([]);
   const today = new Date();
   const currentMonth = today.getMonth();
+
   const addExpense = (newExpense) => {
     setExpenses((prev) => [
       ...prev,
@@ -19,29 +20,26 @@ export default function App() {
   const [userInput, setUserInput] = useState("");
   const [select, setSelect] = useState("");
 
-  const expenseEqual = expenses.filter((expense) => {
+  let monthFilteredExpenses;
+
+  if (select === "allTime") {
+    monthFilteredExpenses = expenses;
+  } else {
+    monthFilteredExpenses = expenses.filter((expense) => {
+      return expense.month === currentMonth;
+    });
+  }
+  const expenseEqual = monthFilteredExpenses.filter((expense) => {
     return expense.name === userInput;
   });
 
-  
-  const selectedJobs = expenses.filter((expense) => {
-    
-    if(select === "thisMonth") {
-      let selectedJob = expense.month = currentMonth
-    }
-    else {
-      let selectedJob = expense
-    }
-  
-    return expense.month === select
-  })
   return (
     <Routes>
       <Route
         path="/"
         element={
           <Home
-            expenses={userInput === "" ? expenses : expenseEqual : select}
+            expenses={userInput === "" ? monthFilteredExpenses : expenseEqual}
             setExpenses={setExpenses}
             today={today}
             currentMonth={currentMonth}
