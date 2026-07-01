@@ -29,10 +29,22 @@ export default function App() {
       return expense.month === currentMonth;
     });
   }
+
+  const [categoryFilter, setCategoryFilter] = useState("all");
+
+  if (categoryFilter === "all") {
+    // do nothng and just normanll monthFIlteredExpenses
+  } else {
+    monthFilteredExpenses = monthFilteredExpenses.filter(
+      (monthFilteredExpense) => {
+        return monthFilteredExpense.category === categoryFilter;
+      },
+    );
+  }
+
   const expenseEqual = monthFilteredExpenses.filter((expense) => {
     return expense.name === userInput;
   });
-
   return (
     <Routes>
       <Route
@@ -50,6 +62,8 @@ export default function App() {
             expenseEqual={expenseEqual}
             select={select}
             setSelect={setSelect}
+            categoryFilter={categoryFilter}
+            setCategoryFilter={setCategoryFilter}
           />
         }
       />

@@ -5,7 +5,7 @@ import Filtering from "../../components/Filtering/Filtering"
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Home({ expenses, budget, setBudget, setExpenses, userInput, setUserInput, expenseEqual, today, currentMonth, select, setSelect }) {
+function Home({ expenses, budget, setBudget, setExpenses, userInput, setUserInput, expenseEqual, today, currentMonth, select, setSelect, categoryFilter, setCategoryFilter }) {
   return (
     <div>
       <Cards expenses={expenses} budget={budget} setBudget={setBudget}></Cards>
@@ -25,7 +25,10 @@ function Home({ expenses, budget, setBudget, setExpenses, userInput, setUserInpu
             setUserInput={setUserInput}
             expenseEqual={expenseEqual}
             select={select}
-            setSelect={setSelect}></Filtering>
+            setSelect={setSelect}
+            categoryFilter={categoryFilter}
+            setCategoryFilter={setCategoryFilter}
+            ></Filtering>
             
       
     </div>
