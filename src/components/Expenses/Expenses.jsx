@@ -4,10 +4,10 @@ import { useState } from "react";
 
 
 function Expenses({ expense, setExpenses }) {
-  const thisExpense = expense.id;
-  const [changed, setChanged] = useState("")
+  const [changed, setChanged] = useState(false);
+  const [editedName, setEditedName] = useState(expense.name);
   function removeExpense() {
-    setExpenses((prev) => prev.filter((e) => e.id !== thisExpense));
+    setExpenses((prev) => prev.filter((e) => e.id !== expense.id));
   }
   function changeExpense() {
     if(changed) {
@@ -16,9 +16,23 @@ function Expenses({ expense, setExpenses }) {
       setChanged(true);
     }
   }
+
+  function updateTheName() {
+    setExpenses((prev) =>
+    prev.map((e) => 
+    e.id === expense.id ? {...e, name: editedName} : e));
+
+    setChanged(false);
+  }
+  const theP = changed ? <input placeholder="change the name" value={editedName} onChange={(e)=> setEditedName(e.target.value)} onKeyDown={(e)=> {
+    if(e.key === "Enter") {
+      updateTheName();
+    }
+  }}></input> : <p>{expense.name}</p>
   return (
-    <div className="expensesContainer" onDoubleClick={changeExpense}>
-      <p>{expense.name}</p>
+    <div className="expensesContainer">
+      <div onDoubleClick={changeExpense}> {theP}</div>
+ 
       <p>{expense.amount}</p>
       <p>{expense.description}</p>
       <p>{expense.category}</p>
