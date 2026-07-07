@@ -7,6 +7,20 @@ function Cards({ expenses, budget, setBudget }) {
   }
   const today = new Date();
   const currentMonth = today.getMonth();
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   function filterMonth(expenses) {
     return Number(expenses.month) === currentMonth;
@@ -79,6 +93,25 @@ function Cards({ expenses, budget, setBudget }) {
             className="spendingsDashboard"
             style={{ width: `${expensePercent}%` }}
           ></div>
+        </div>
+      </div>
+      <div className="monthlyDashboardContainer">
+        <h1></h1>
+        <p></p>
+        <div className="verticalMoneyLevels">
+          <p className="verticalLevel">1000</p>
+          <p className="verticalLevel">2000</p>
+          <p className="verticalLevel">3000</p>
+          <p className="verticalLevel">4000</p>
+          <p className="verticalLevel">5000</p>
+        </div>
+        <div className="horizMonthLevels">
+          <p className="horizMonthLevel">{months[currentMonth]}</p>
+          <p className="horizMonthLevel">{months[currentMonth - 1]}</p>
+          <p className="horizMonthLevel">{months[currentMonth - 2]}</p>
+          <p className="horizMonthLevel">{months[currentMonth - 3]}</p>
+          <p className="horizMonthLevel">{months[currentMonth - 4]}</p>
+          <p className="horizMonthLevel">{months[currentMonth - 5]}</p>
         </div>
       </div>
     </div>
