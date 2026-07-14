@@ -96,9 +96,10 @@ function Cards({ expenses, budget, setBudget }) {
         </div>
       </div>
       <div className="monthlyDashboardContainer">
-        <h1></h1>
+        <h1>Expenses by months </h1>
+        <p className="howManyMonthCovers">last 6 month</p>
         <p></p>
-        <div className="verticalMoneyLevels">
+        <div className="verticalMoneyLevels" style={{ height: "100%" }}>
           <p className="verticalLevel">1000</p>
           <p className="verticalLevel">2000</p>
           <p className="verticalLevel">3000</p>
@@ -106,12 +107,35 @@ function Cards({ expenses, budget, setBudget }) {
           <p className="verticalLevel">5000</p>
         </div>
         <div className="horizMonthLevels">
-          <p className="horizMonthLevel">{months[currentMonth]}</p>
-          <p className="horizMonthLevel">{months[currentMonth - 1]}</p>
-          <p className="horizMonthLevel">{months[currentMonth - 2]}</p>
-          <p className="horizMonthLevel">{months[currentMonth - 3]}</p>
-          <p className="horizMonthLevel">{months[currentMonth - 4]}</p>
-          <p className="horizMonthLevel">{months[currentMonth - 5]}</p>
+          <div>
+            <div className="byMonthDashboard"></div>
+            <p className="horizMonthLevel">{months[currentMonth - 5]}</p>
+          </div>
+
+          <div>
+            <div className="byMonthDashboard"></div>
+            <p className="horizMonthLevel">{months[currentMonth - 4]}</p>
+          </div>
+
+          <div>
+            <div className="byMonthDashboard"></div>
+            <p className="horizMonthLevel">{months[currentMonth - 3]}</p>
+          </div>
+
+          <div>
+            <div className="byMonthDashboard"></div>
+            <p className="horizMonthLevel">{months[currentMonth - 2]}</p>
+          </div>
+
+          <div>
+            <div className="byMonthDashboard"></div>
+            <p className="horizMonthLevel">{months[currentMonth - 1]}</p>
+          </div>
+
+          <div>
+            <div className="byMonthDashboard"></div>
+            <p className="horizMonthLevel">{months[currentMonth]}</p>
+          </div>
         </div>
       </div>
     </div>
