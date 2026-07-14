@@ -8,19 +8,38 @@ function Cards({ expenses, budget, setBudget }) {
   const today = new Date();
   const currentMonth = today.getMonth();
   const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+  { name: "Jan", total: 0 },
+  { name: "Feb", total: 0 },
+  { name: "Mar", total: 0 },
+  { name: "Apr", total: 0 },
+  { name: "May", total: 0 },
+  { name: "Jun", total: 0 },
+  { name: "Jul", total: 0 },
+  { name: "Aug", total: 0 },
+  { name: "Sep", total: 0 },
+  { name: "Oct", total: 0 },
+  { name: "Nov", total: 0 },
+  { name: "Dec", total: 0 },
+];
+
+
+  function calculateTotal(i) {
+
+    function filterTheMonth(expenses) {
+      return Number(expenses.month) === i;
+    }
+    const result = (expenses || []).filter(filterTheMonth);
+    const totalPerMonth = result.reduce((sum, e) => {
+      return sum + Number(e.amount)
+    }, 0);
+
+    return totalPerMonth;
+  };
+  
+
+
+
+
 
   function filterMonth(expenses) {
     return Number(expenses.month) === currentMonth;
@@ -60,6 +79,14 @@ function Cards({ expenses, budget, setBudget }) {
       <p className="overTheBudget">{overTheBudget} over the budget</p>
     );
   }
+
+
+
+
+
+
+  {/* the dashboard for the months */}
+  const theHighestValue = months.
 
   return (
     <div>
