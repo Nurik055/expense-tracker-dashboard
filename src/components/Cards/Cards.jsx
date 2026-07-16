@@ -8,21 +8,22 @@ function Cards({ expenses, budget, setBudget }) {
   const today = new Date();
   const currentMonth = today.getMonth();
   const months = [
-  { name: "Jan", total: 0 },
-  { name: "Feb", total: 0 },
-  { name: "Mar", total: 0 },
-  { name: "Apr", total: 0 },
-  { name: "May", total: 0 },
-  { name: "Jun", total: 0 },
-  { name: "Jul", total: 0 },
-  { name: "Aug", total: 0 },
-  { name: "Sep", total: 0 },
-  { name: "Oct", total: 0 },
-  { name: "Nov", total: 0 },
-  { name: "Dec", total: 0 },
+  { name: "Jan", total: calculateTotal(0) },
+  { name: "Feb", total: calculateTotal(1) },
+  { name: "Mar", total: calculateTotal(2) },
+  { name: "Apr", total: calculateTotal(3) },
+  { name: "May", total: calculateTotal(4) },
+  { name: "Jun", total: calculateTotal(5) },
+  { name: "Jul", total: calculateTotal(6) },
+  { name: "Aug", total: calculateTotal(7) },
+  { name: "Sep", total: calculateTotal(8) },
+  { name: "Oct", total: calculateTotal(9) },
+  { name: "Nov", total: calculateTotal(10) },
+  { name: "Dec", total: calculateTotal(11) },
 ];
 
 
+{/* the months dashboard */}
   function calculateTotal(i) {
 
     function filterTheMonth(expenses) {
@@ -35,11 +36,20 @@ function Cards({ expenses, budget, setBudget }) {
 
     return totalPerMonth;
   };
+  let highest = 0;
+  months.forEach(forEachFunction);
+  function forEachFunction(month) {
+    if(month.total > highest) {
+      highest = month.total
+      
+    }
+  }
+  {/* or i could write it with an arrow function, like after for eachs () inside it start with the "month" */}
   
 
 
 
-
+{/* other dashboards */}
 
   function filterMonth(expenses) {
     return Number(expenses.month) === currentMonth;
@@ -85,8 +95,7 @@ function Cards({ expenses, budget, setBudget }) {
 
 
 
-  {/* the dashboard for the months */}
-  const theHighestValue = months.
+  
 
   return (
     <div>
@@ -122,6 +131,8 @@ function Cards({ expenses, budget, setBudget }) {
           ></div>
         </div>
       </div>
+
+
       <div className="monthlyDashboardContainer">
         <h1>Expenses by months </h1>
         <p className="howManyMonthCovers">last 6 month</p>
@@ -135,33 +146,33 @@ function Cards({ expenses, budget, setBudget }) {
         </div>
         <div className="horizMonthLevels">
           <div>
-            <div className="byMonthDashboard"></div>
-            <p className="horizMonthLevel">{months[currentMonth - 5]}</p>
+            <div className="byMonthDashboard"style={{height: `${(months[currentMonth - 5].total / highest) * 100}%`}}></div>
+            <p className="horizMonthLevel">{months[currentMonth - 5].name}</p>
           </div>
 
           <div>
-            <div className="byMonthDashboard"></div>
-            <p className="horizMonthLevel">{months[currentMonth - 4]}</p>
+            <div className="byMonthDashboard" style={{height: `${(months[currentMonth - 5].total / highest) * 100}%`}}></div>
+            <p className="horizMonthLevel">{months[currentMonth - 4].name}</p>
           </div>
 
           <div>
-            <div className="byMonthDashboard"></div>
-            <p className="horizMonthLevel">{months[currentMonth - 3]}</p>
+            <div className="byMonthDashboard" style={{height: `${(months[currentMonth - 5].total / highest) * 100}%`}}></div>
+            <p className="horizMonthLevel">{months[currentMonth - 3].name}</p>
           </div>
 
           <div>
-            <div className="byMonthDashboard"></div>
-            <p className="horizMonthLevel">{months[currentMonth - 2]}</p>
+            <div className="byMonthDashboard" style={{height: `${(months[currentMonth - 5].total / highest) * 100}%`}}></div>
+            <p className="horizMonthLevel">{months[currentMonth - 2].name}</p>
           </div>
 
           <div>
-            <div className="byMonthDashboard"></div>
-            <p className="horizMonthLevel">{months[currentMonth - 1]}</p>
+            <div className="byMonthDashboard" style={{height: `${(months[currentMonth - 5].total / highest) * 100}%`}}></div>
+            <p className="horizMonthLevel">{months[currentMonth - 1].name}</p>
           </div>
 
           <div>
-            <div className="byMonthDashboard"></div>
-            <p className="horizMonthLevel">{months[currentMonth]}</p>
+            <div className="byMonthDashboard" style={{height: `${(months[currentMonth - 5].total / highest) * 100}%`}}></div>
+            <p className="horizMonthLevel">{months[currentMonth].name}</p>
           </div>
         </div>
       </div>
