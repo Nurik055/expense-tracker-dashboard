@@ -48,3 +48,12 @@
     align-items: flex-end;
     height: 200px;
 }
+
+
+.verticalMoneyLevels {
+    position: absolute;
+    top: 110px
+}
+.monthlyDashboardContainer {
+    position: relative;
+}

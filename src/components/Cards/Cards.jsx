@@ -146,11 +146,11 @@ function Cards({ expenses, budget, setBudget }) {
         <p className="howManyMonthCovers">last 6 month</p>
         <p></p>
         <div className="verticalMoneyLevels" style={{ height: "100%" }}>
-          <p className="verticalLevel">1000</p>
-          <p className="verticalLevel">2000</p>
-          <p className="verticalLevel">3000</p>
-          <p className="verticalLevel">4000</p>
           <p className="verticalLevel">5000</p>
+          <p className="verticalLevel">4000</p>
+          <p className="verticalLevel">3000</p>
+          <p className="verticalLevel">2000</p>
+          <p className="verticalLevel">1000</p>
         </div>
         <div className="horizMonthLevels">
           <div className="byMonthDashboardContainer">
