@@ -1,10 +1,41 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../src/pages/Home/Home";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AddingExpense from "../src/components/AddingExpense/AddingExpense";
 
 export default function App() {
-  const [expenses, setExpenses] = useState([]);
+  {
+    /* expenses and local storeage */
+  }
+  const [expenses, setExpenses] = useState(() => {
+  const savedExpenses = localStorage.getItem("expenses");
+
+  if (savedExpenses) {
+    return JSON.parse(savedExpenses);
+  }
+
+  return [];
+});
+
+  useEffect(() => {
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+  }, [expenses]);
+
+  const [budget, setBudget] = useState(() => {
+    const savedBudget = localStorage.getItem("budget");
+
+    if (savedBudget) {
+      return JSON.parse(savedBudget);
+    }
+
+    return 50000;
+  });
+  useEffect(() => {
+    localStorage.setItem("budget", JSON.stringify(budget));
+  }, [budget]);
+  {
+    /* current month */
+  }
   const today = new Date();
   const currentMonth = today.getMonth();
 
@@ -14,8 +45,6 @@ export default function App() {
       { ...newExpense, id: Date.now(), month: currentMonth },
     ]);
   };
-
-  const [budget, setBudget] = useState(0);
 
   const [userInput, setUserInput] = useState("");
   const [select, setSelect] = useState("");
