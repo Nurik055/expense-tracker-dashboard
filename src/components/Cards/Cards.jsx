@@ -48,12 +48,19 @@ function Cards({ expenses, budget, setBudget }) {
   }
 
   {/* the category dashboard */}
-  function filterMonth(expenses) {
-   return Number(expenses.month)===currentMonth;
+  function filterMonth(expense) {
+   return Number(expense.month)===currentMonth;
   }
   const result = (expenses || []).filter(filterMonth);
-  const byCategory = result
+  const totals = result.reduce((acc, expense) => {
+    if(!acc[expense.category]) {
+      acc[expense.category] = 0;
+    }
 
+    acc[expense.category] += expense.amount;
+
+    return acc;
+  }, {})
    
   {/* the filteredExpenses is only existing in filter month, and i am only gettign the total for the month and not per hte category!!!! */}
   
