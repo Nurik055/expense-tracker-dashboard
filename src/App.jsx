@@ -8,14 +8,14 @@ export default function App() {
     /* expenses and local storeage */
   }
   const [expenses, setExpenses] = useState(() => {
-  const savedExpenses = localStorage.getItem("expenses");
+    const savedExpenses = localStorage.getItem("expenses");
 
-  if (savedExpenses) {
-    return JSON.parse(savedExpenses);
-  }
+    if (savedExpenses) {
+      return JSON.parse(savedExpenses);
+    }
 
-  return [];
-});
+    return [];
+  });
 
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
