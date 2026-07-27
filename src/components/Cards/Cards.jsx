@@ -47,25 +47,24 @@ function Cards({ expenses, budget, setBudget }) {
     /* or i could write it with an arrow function, like after for eachs () inside it start with the "month" */
   }
 
-  {/* the category dashboard */}
-  function filterMonth(expense) {
-   return Number(expense.month)===currentMonth;
+  {
+    /* the category dashboard */
   }
-  const result = (expenses || []).filter(filterMonth);
-  const totals = result.reduce((acc, expense) => {
+  function filterMonth(expense) {
+    return Number(expense.month) === currentMonth;
+  }
+  const result = expenses.filter(filterMonth);
+  const totalsByCategory = result.reduce((acc, expense)=> {
     if(!acc[expense.category]) {
       acc[expense.category] = 0;
     }
 
     acc[expense.category] += expense.amount;
-
-    return acc;
+    return acc
   }, {})
-   
-  {/* the filteredExpenses is only existing in filter month, and i am only gettign the total for the month and not per hte category!!!! */}
-  
-  
 
+
+ 
 
   {
     /* other dashboards */
@@ -234,7 +233,6 @@ function Cards({ expenses, budget, setBudget }) {
           </div>
         </div>
       </div>
-
 
       <div></div>
     </div>
