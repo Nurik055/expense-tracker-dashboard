@@ -54,17 +54,28 @@ function Cards({ expenses, budget, setBudget }) {
     return Number(expense.month) === currentMonth;
   }
   const result = expenses.filter(filterMonth);
-  const totalsByCategory = result.reduce((acc, expense)=> {
-    if(!acc[expense.category]) {
+  const totalsByCategory = result.reduce((acc, expense) => {
+    if (!acc[expense.category]) {
       acc[expense.category] = 0;
     }
 
     acc[expense.category] += expense.amount;
-    return acc
-  }, {})
+    return acc;
+  }, {});
+  {
+    /* entries turns objects into arrays, idk how good is it, but it worth noting i guess */
+  }
+  const entries = Object.entries(totalsByCategory);
 
+  let highest = entries[0][1];
 
- 
+  for (let i = 0; i < entries.length; i++) {
+    let currentAmount = entries[i][1];
+
+    if (currentAmount > highest) {
+      highest = currentAmount;
+    }
+  }
 
   {
     /* other dashboards */
