@@ -29,8 +29,8 @@ function Cards({ expenses, budget, setBudget }) {
     function filterTheMonth(expenses) {
       return Number(expenses.month) === i;
     }
-    const result = (expenses || []).filter(filterTheMonth);
-    const totalPerMonth = result.reduce((sum, e) => {
+    const resultMonth = (expenses || []).filter(filterTheMonth);
+    const totalPerMonth = resultMonth.reduce((sum, e) => {
       return sum + Number(e.amount);
     }, 0);
 
@@ -50,32 +50,50 @@ function Cards({ expenses, budget, setBudget }) {
   {
     /* the category dashboard */
   }
-  function filterMonth(expense) {
-    return Number(expense.month) === currentMonth;
-  }
-  const result = expenses.filter(filterMonth);
-  const totalsByCategory = result.reduce((acc, expense) => {
-    if (!acc[expense.category]) {
-      acc[expense.category] = 0;
+  function calculateTotalCategory(i) {
+    function filterMonth(expense) {
+      return Number(expense.month) === currentMonth;
     }
+    const resultCategory = expenses.filter(filterMonth);
+    const totalsByCategory = resultCategory.reduce((acc, expense) => {
+      if (!acc[expense.category]) {
+        acc[expense.category] = 0;
+      }
 
-    acc[expense.category] += expense.amount;
-    return acc;
-  }, {});
+      acc[expense.category] += expense.amount;
+      return acc;
+    }, {});
+  }
+
   {
     /* entries turns objects into arrays, idk how good is it, but it worth noting i guess */
   }
   const entries = Object.entries(totalsByCategory);
 
-  let highest = entries[0][1];
+  let highestCategory = entries[0][1];
 
   for (let i = 0; i < entries.length; i++) {
     let currentAmount = entries[i][1];
 
-    if (currentAmount > highest) {
-      highest = currentAmount;
+    if (entries.length === 0) return;
+    if (currentAmount > highestCategory) {
+      highestCategory = currentAmount;
     }
   }
+  const categories = [
+    { category: "Jan", total: calculateTotalCategory(0) },
+    { category: "Feb", total: calculateTotalCategory(1) },
+    { category: "Mar", total: calculateTotalCategory(2) },
+    { category: "Apr", total: calculateTotalCategory(3) },
+    { category: "May", total: calculateTotalCategory(4) },
+    { category: "Jun", total: calculateTotalCategory(5) },
+    { category: "Jul", total: calculateTotalCategory(6) },
+    { category: "Aug", total: calculateTotalCategory(7) },
+    { category: "Sep", total: calculateTotalCategory(8) },
+    { category: "Oct", total: calculateTotalCategory(9) },
+    { category: "Nov", total: calculateTotalCategory(10) },
+    { category: "Dec", total: calculateTotalCategory(11) },
+  ];
 
   {
     /* other dashboards */
@@ -245,7 +263,14 @@ function Cards({ expenses, budget, setBudget }) {
         </div>
       </div>
 
-      <div></div>
+      <div className="dashboardByCategory">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   );
 }
