@@ -50,229 +50,250 @@ function Cards({ expenses, budget, setBudget }) {
   {
     /* the category dashboard */
   }
-  function calculateTotalCategory(i) {
+  function calculateTotalCategory() {
     function filterMonth(expense) {
       return Number(expense.month) === currentMonth;
     }
+
     const resultCategory = expenses.filter(filterMonth);
+
     const totalsByCategory = resultCategory.reduce((acc, expense) => {
       if (!acc[expense.category]) {
         acc[expense.category] = 0;
       }
 
-      acc[expense.category] += expense.amount;
+      acc[expense.category] += Number(expense.amount);
       return acc;
     }, {});
-  }
 
-  {
-    /* entries turns objects into arrays, idk how good is it, but it worth noting i guess */
-  }
-  const entries = Object.entries(totalsByCategory);
+    const entries = Object.entries(totalsByCategory);
 
-  let highestCategory = entries[0][1];
-
-  for (let i = 0; i < entries.length; i++) {
-    let currentAmount = entries[i][1];
-
-    if (entries.length === 0) return;
-    if (currentAmount > highestCategory) {
-      highestCategory = currentAmount;
+    if (entries.length === 0) {
+      return {
+        totalsByCategory: {},
+        highestCategoryAmount: 0,
+      };
     }
-  }
-  const categories = [
-    { category: "Jan", total: calculateTotalCategory(0) },
-    { category: "Feb", total: calculateTotalCategory(1) },
-    { category: "Mar", total: calculateTotalCategory(2) },
-    { category: "Apr", total: calculateTotalCategory(3) },
-    { category: "May", total: calculateTotalCategory(4) },
-    { category: "Jun", total: calculateTotalCategory(5) },
-    { category: "Jul", total: calculateTotalCategory(6) },
-    { category: "Aug", total: calculateTotalCategory(7) },
-    { category: "Sep", total: calculateTotalCategory(8) },
-    { category: "Oct", total: calculateTotalCategory(9) },
-    { category: "Nov", total: calculateTotalCategory(10) },
-    { category: "Dec", total: calculateTotalCategory(11) },
-  ];
 
-  {
-    /* other dashboards */
-  }
+    let highestCategoryAmount = entries[0][1];
 
-  function filterMonth(expenses) {
-    return Number(expenses.month) === currentMonth;
-  }
+    for (let i = 0; i < entries.length; i++) {
+      let currentAmount = entries[i][1];
 
-  const result = (expenses || []).filter(filterMonth);
-
-  const total = result.reduce((sum, expense) => {
-    return sum + Number(expense.amount);
-  }, 0);
-
-  {
-    /* budget functions and updating it */
-  }
-  const [isEditing, setIsEditing] = useState(false);
-
-  function budgetFunction(e) {
-    if (!isEditing) {
-      setIsEditing(true);
-    } else {
-      setIsEditing(false);
+      if (currentAmount > highestCategoryAmount) {
+        highestCategoryAmount = currentAmount;
+      }
     }
+
+    return {
+      totalsByCategory,
+      highestCategoryAmount,
+    };
   }
-  {
-    /* the dashboard and its text */
-  }
-  const expensePercent = (total / budget) * 100;
-  const remaining = budget - total;
-  const overTheBudget = total - budget;
-  let spendingDifference = "";
-  if (remaining > 0) {
-    spendingDifference = <p className="remainingBudget">{remaining} remains</p>;
-  } else if (remaining === 0) {
-    spendingDifference = <p></p>;
+}
+const { totalsByCategory, highestCategoryAmount } = calculateTotalCategory();
+
+{
+  /* other dashboards */
+}
+
+function filterMonth(expenses) {
+  return Number(expenses.month) === currentMonth;
+}
+
+const result = (expenses || []).filter(filterMonth);
+
+const total = result.reduce((sum, expense) => {
+  return sum + Number(expense.amount);
+}, 0);
+
+{
+  /* budget functions and updating it */
+}
+const [isEditing, setIsEditing] = useState(false);
+
+function budgetFunction(e) {
+  if (!isEditing) {
+    setIsEditing(true);
   } else {
-    spendingDifference = (
-      <p className="overTheBudget">{overTheBudget} over the budget</p>
-    );
+    setIsEditing(false);
   }
-
-  let month1 = currentMonth - 5;
-  if (month1 < 0) month1 += 12;
-
-  let month2 = currentMonth - 4;
-  if (month2 < 0) month2 += 12;
-
-  let month3 = currentMonth - 3;
-  if (month3 < 0) month3 += 12;
-
-  let month4 = currentMonth - 2;
-  if (month4 < 0) month4 += 12;
-
-  let month5 = currentMonth - 1;
-  if (month5 < 0) month5 += 12;
-
-  let month6 = currentMonth;
-  return (
-    <div>
-      <div className="thisMSpend">
-        <p className="thisMSpendP">This Month Spend:</p>
-        <p className="thisMSpendN">${total}</p>
-      </div>
-
-      <div className="budgetCard" onDoubleClick={budgetFunction}>
-        {isEditing ? (
-          <input
-            value={budget}
-            onChange={(e) => setBudget(Number(e.target.value))}
-          ></input>
-        ) : (
-          <>
-            <p>Budget: {budget}</p>
-          </>
-        )}
-      </div>
-
-      <div className="budgetDashboardContainer">
-        <p>Monthly budget</p>
-        <p>
-          ${total} of ${budget} spend
-        </p>
-        <div>{spendingDifference}</div>
-
-        <div className="budgetDashboard" style={{ width: "100%" }}>
-          <div
-            className="spendingsDashboard"
-            style={{ width: `${expensePercent}%` }}
-          ></div>
-        </div>
-      </div>
-
-      <div className="monthlyDashboardContainer">
-        <h1>Expenses by months </h1>
-        <p className="howManyMonthCovers">last 6 month</p>
-        <p></p>
-        <div className="verticalMoneyLevels" style={{ height: "100%" }}>
-          <p className="verticalLevel">5000</p>
-          <p className="verticalLevel">4000</p>
-          <p className="verticalLevel">3000</p>
-          <p className="verticalLevel">2000</p>
-          <p className="verticalLevel">1000</p>
-        </div>
-        <div className="horizMonthLevels">
-          <div className="byMonthDashboardContainer">
-            <div className="barArea">
-              <div
-                className="byMonthDashboard"
-                style={{ height: `${(months[month1].total / highest) * 100}%` }}
-              ></div>
-            </div>
-            <p>{months[month1].name}</p>
-          </div>
-
-          <div className="byMonthDashboardContainer">
-            <div className="barArea">
-              <div
-                className="byMonthDashboard"
-                style={{ height: `${(months[month2].total / highest) * 100}%` }}
-              ></div>
-            </div>
-            <p>{months[month2].name}</p>
-          </div>
-
-          <div className="byMonthDashboardContainer">
-            <div className="barArea">
-              <div
-                className="byMonthDashboard"
-                style={{ height: `${(months[month3].total / highest) * 100}%` }}
-              ></div>
-            </div>
-            <p>{months[month3].name}</p>
-          </div>
-
-          <div className="byMonthDashboardContainer">
-            <div className="barArea">
-              <div
-                className="byMonthDashboard"
-                style={{ height: `${(months[month4].total / highest) * 100}%` }}
-              ></div>
-            </div>
-            <p>{months[month4].name}</p>
-          </div>
-
-          <div className="byMonthDashboardContainer">
-            <div className="barArea">
-              <div
-                className="byMonthDashboard"
-                style={{ height: `${(months[month5].total / highest) * 100}%` }}
-              ></div>
-            </div>
-            <p>{months[month5].name}</p>
-          </div>
-
-          <div className="byMonthDashboardContainer">
-            <div className="barArea">
-              <div
-                className="byMonthDashboard"
-                style={{ height: `${(months[month6].total / highest) * 100}%` }}
-              ></div>
-            </div>
-            <p>{months[month6].name}</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="dashboardByCategory">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
+}
+{
+  /* the dashboard and its text */
+}
+const expensePercent = (total / budget) * 100;
+const remaining = budget - total;
+const overTheBudget = total - budget;
+let spendingDifference = "";
+if (remaining > 0) {
+  spendingDifference = <p className="remainingBudget">{remaining} remains</p>;
+} else if (remaining === 0) {
+  spendingDifference = <p></p>;
+} else {
+  spendingDifference = (
+    <p className="overTheBudget">{overTheBudget} over the budget</p>
   );
 }
+
+let month1 = currentMonth - 5;
+if (month1 < 0) month1 += 12;
+
+let month2 = currentMonth - 4;
+if (month2 < 0) month2 += 12;
+
+let month3 = currentMonth - 3;
+if (month3 < 0) month3 += 12;
+
+let month4 = currentMonth - 2;
+if (month4 < 0) month4 += 12;
+
+let month5 = currentMonth - 1;
+if (month5 < 0) month5 += 12;
+
+let month6 = currentMonth;
+return (
+  <div>
+    <div className="thisMSpend">
+      <p className="thisMSpendP">This Month Spend:</p>
+      <p className="thisMSpendN">${total}</p>
+    </div>
+
+    <div className="budgetCard" onDoubleClick={budgetFunction}>
+      {isEditing ? (
+        <input
+          value={budget}
+          onChange={(e) => setBudget(Number(e.target.value))}
+        ></input>
+      ) : (
+        <>
+          <p>Budget: {budget}</p>
+        </>
+      )}
+    </div>
+
+    <div className="budgetDashboardContainer">
+      <p>Monthly budget</p>
+      <p>
+        ${total} of ${budget} spend
+      </p>
+      <div>{spendingDifference}</div>
+
+      <div className="budgetDashboard" style={{ width: "100%" }}>
+        <div
+          className="spendingsDashboard"
+          style={{ width: `${expensePercent}%` }}
+        ></div>
+      </div>
+    </div>
+
+    <div className="monthlyDashboardContainer">
+      <h1>Expenses by months </h1>
+      <p className="howManyMonthCovers">last 6 month</p>
+      <p></p>
+      <div className="verticalMoneyLevels" style={{ height: "100%" }}>
+        <p className="verticalLevel">5000</p>
+        <p className="verticalLevel">4000</p>
+        <p className="verticalLevel">3000</p>
+        <p className="verticalLevel">2000</p>
+        <p className="verticalLevel">1000</p>
+      </div>
+      <div className="horizMonthLevels">
+        <div className="byMonthDashboardContainer">
+          <div className="barArea">
+            <div
+              className="byMonthDashboard"
+              style={{ height: `${(months[month1].total / highest) * 100}%` }}
+            ></div>
+          </div>
+          <p>{months[month1].name}</p>
+        </div>
+
+        <div className="byMonthDashboardContainer">
+          <div className="barArea">
+            <div
+              className="byMonthDashboard"
+              style={{ height: `${(months[month2].total / highest) * 100}%` }}
+            ></div>
+          </div>
+          <p>{months[month2].name}</p>
+        </div>
+
+        <div className="byMonthDashboardContainer">
+          <div className="barArea">
+            <div
+              className="byMonthDashboard"
+              style={{ height: `${(months[month3].total / highest) * 100}%` }}
+            ></div>
+          </div>
+          <p>{months[month3].name}</p>
+        </div>
+
+        <div className="byMonthDashboardContainer">
+          <div className="barArea">
+            <div
+              className="byMonthDashboard"
+              style={{ height: `${(months[month4].total / highest) * 100}%` }}
+            ></div>
+          </div>
+          <p>{months[month4].name}</p>
+        </div>
+
+        <div className="byMonthDashboardContainer">
+          <div className="barArea">
+            <div
+              className="byMonthDashboard"
+              style={{ height: `${(months[month5].total / highest) * 100}%` }}
+            ></div>
+          </div>
+          <p>{months[month5].name}</p>
+        </div>
+
+        <div className="byMonthDashboardContainer">
+          <div className="barArea">
+            <div
+              className="byMonthDashboard"
+              style={{ height: `${(months[month6].total / highest) * 100}%` }}
+            ></div>
+          </div>
+          <p>{months[month6].name}</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="dashboardByCategoryContainer">
+      <div
+        className="oneCategory"
+        style={{
+          height: `${(totalsByCategory.Food / highestCategoryAmount) * 100}%`,
+        }}
+      ></div>
+      <div
+        className="oneCategory"
+        style={{
+          height: `${(totalsByCategory.Transport / highestCategoryAmount) * 100}%`,
+        }}
+      ></div>
+      <div
+        className="oneCategory"
+        style={{
+          height: `${(totalsByCategory.Entertainment / highestCategoryAmount) * 100}%`,
+        }}
+      ></div>
+      <div
+        className="oneCategory"
+        style={{
+          height: `${(totalsByCategory.Bills / highestCategoryAmount) * 100}%`,
+        }}
+      ></div>
+      <div
+        className="oneCategory"
+        style={{
+          height: `${(totalsByCategory.Other / highestCategoryAmount) * 100}%`,
+        }}
+      ></div>
+    </div>
+  </div>
+);
 
 export default Cards;

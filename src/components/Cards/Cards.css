@@ -23,19 +23,24 @@
     border-radius: 20px
 }
 
+
+
+
+
+
+
+
+.monthlyDashboardContainer {
+    position: relative;
+}
+.verticalMoneyLevels {
+    position: absolute;
+    top: 110px
+}
 .horizMonthLevels {
     display: flex;
     height: 100%;
     padding-left: 50px;
-}
-
-.byMonthDashboard {
-    width: 40px;
-    background-color: green;
-    border: 1px solid black;
-    
-    
-    
 }
 .byMonthDashboardContainer {
     background-color: red;
@@ -48,12 +53,28 @@
     align-items: flex-end;
     height: 200px;
 }
-
-
-.verticalMoneyLevels {
-    position: absolute;
-    top: 110px
+.byMonthDashboard {
+    width: 40px;
+    background-color: green;
+    border: 1px solid black;
 }
-.monthlyDashboardContainer {
+
+
+
+
+
+
+
+
+
+
+
+.dashboardByCategoryContainer {
+    background-color: rgb(162, 246, 162);
     position: relative;
+    
+}
+.oneCategory {
+    display: flex;
+    flex-direction: column;
 }
