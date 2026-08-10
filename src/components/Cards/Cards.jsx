@@ -265,31 +265,31 @@ return (
       <div
         className="oneCategory"
         style={{
-          height: `${(totalsByCategory.Food / highestCategoryAmount) * 100}%`,
+          height: `${(totalsByCategory.Food || 0 / highestCategoryAmount) * 100}%`,
         }}
       ></div>
       <div
         className="oneCategory"
         style={{
-          height: `${(totalsByCategory.Transport / highestCategoryAmount) * 100}%`,
+          height: `${(totalsByCategory.Transport || 0 / highestCategoryAmount) * 100}%`,
         }}
       ></div>
       <div
         className="oneCategory"
         style={{
-          height: `${(totalsByCategory.Entertainment / highestCategoryAmount) * 100}%`,
+          height: `${(totalsByCategory.Entertainment || 0 / highestCategoryAmount) * 100}%`,
         }}
       ></div>
       <div
         className="oneCategory"
         style={{
-          height: `${(totalsByCategory.Bills / highestCategoryAmount) * 100}%`,
+          height: `${(totalsByCategory.Bills || 0 / highestCategoryAmount) * 100}%`,
         }}
       ></div>
       <div
         className="oneCategory"
         style={{
-          height: `${(totalsByCategory.Other / highestCategoryAmount) * 100}%`,
+          height: `${(totalsByCategory.Other || 0 / highestCategoryAmount) * 100}%`,
         }}
       ></div>
     </div>
