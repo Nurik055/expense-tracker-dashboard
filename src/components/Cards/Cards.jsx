@@ -154,6 +154,7 @@ function Cards({ expenses, budget, setBudget }) {
   let month6 = currentMonth;
   return (
     <div>
+      <div className="theCardsContainer">
       <div className="thisMSpend">
         <p className="thisMSpendP">This Month Spend:</p>
         <p className="thisMSpendN">${total}</p>
@@ -186,7 +187,7 @@ function Cards({ expenses, budget, setBudget }) {
           ></div>
         </div>
       </div>
-
+</div>
       <div className="monthlyDashboardContainer">
         <h1>Expenses by months </h1>
         <p className="howManyMonthCovers">last 6 month</p>

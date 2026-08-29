@@ -1,11 +1,25 @@
 .budgetCard {
     background-color: pink;
+    width: 400px;
+    margin-top: 30px;
+    height:150px;
 }
 .budgetDashboardContainer {
     background-color: red;
+    width: 380px;
+    height:150px;
+    padding: 0 10px 0 10px;
+    margin-top: 30px;
+}
+.theCardsContainer {
+    display:flex;
+    gap: 20px;
 }
 .thisMSpend {
     background-color: green;
+    width: 400px;
+    height:150px;
+    margin-top: 30px;
 }
 .budgetDashboard {
     height: 30px;
