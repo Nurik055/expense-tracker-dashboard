@@ -152,6 +152,7 @@ function Cards({ expenses, budget, setBudget }) {
   if (month5 < 0) month5 += 12;
 
   let month6 = currentMonth;
+  
   return (
     <div>
       <div className="theCardsContainer">
@@ -264,35 +265,49 @@ function Cards({ expenses, budget, setBudget }) {
 
       <div className="dashboardByCategoryContainer">
         <div
-          className="oneCategory"
-          style={{
-            height: `${((totalsByCategory.Food || 0) / highestCategoryAmount) * 100}%`,
-          }}
-        ></div>
-        <div
-          className="oneCategory"
-          style={{
-            height: `${((totalsByCategory.Transport || 0) / highestCategoryAmount) * 100}%`,
-          }}
-        ></div>
-        <div
-          className="oneCategory"
-          style={{
-            height: `${((totalsByCategory.Entertainment || 0) / highestCategoryAmount) * 100}%`,
-          }}
-        ></div>
-        <div
-          className="oneCategory"
-          style={{
-            height: `${((totalsByCategory.Bills || 0) / highestCategoryAmount) * 100}%`,
-          }}
-        ></div>
-        <div
-          className="oneCategory"
-          style={{
-            height: `${((totalsByCategory.Other || 0) / highestCategoryAmount) * 100}%`,
-          }}
-        ></div>
+  className="oneCategory"
+  style={{
+    height: `${((totalsByCategory.Food || 0) / highestCategoryAmount) * 100}%`,
+  }}
+>
+  <p className="categoryDashboardP">Food</p>
+</div>
+
+<div
+  className="oneCategory"
+  style={{
+    height: `${((totalsByCategory.Transport || 0) / highestCategoryAmount) * 100}%`,
+  }}
+>
+  <p className="categoryDashboardP">Transport</p>
+</div>
+
+<div
+  className="oneCategory"
+  style={{
+    height: `${((totalsByCategory.Entertainment || 0) / highestCategoryAmount) * 100}%`,
+  }}
+>
+  <p className="categoryDashboardP">Entertainment</p>
+</div>
+
+<div
+  className="oneCategory"
+  style={{
+    height: `${((totalsByCategory.Bills || 0) / highestCategoryAmount) * 100}%`,
+  }}
+>
+  <p className="categoryDashboardP">Bills</p>
+</div>
+
+<div
+  className="oneCategory"
+  style={{
+    height: `${((totalsByCategory.Other || 0) / highestCategoryAmount) * 100}%`,
+  }}
+>
+  <p className="categoryDashboardP">Other</p>
+</div>
       </div>
     </div>
   );
