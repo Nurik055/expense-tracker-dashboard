@@ -1,3 +1,91 @@
+:root {
+  --surface: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --border: #e2e8f0;
+  --primary: #4f46e5;
+  --negative: #ef4444;
+  --warning: #f59e0b;
+}
+/* EXPENSES */
+
 .expensesContainer {
-    background-color: rgb(84, 84, 252);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 2fr 1.5fr auto; /*complicated shit but, it tells how to position each on the row, tells how wide each column should be */
+  align-items: center;
+  gap: 20px;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 16px auto 0;
+  padding: 18px 24px;
+
+  box-sizing: border-box;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  transition: box-shadow 0.2s ease;
+}
+
+.expensesContainer:hover {
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+/* Expense */
+
+.expenseChangeExpense {
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.expenseAmount {
+  margin: 0;
+
+  color: var(--negative);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.expenseDescription {
+  margin: 0;
+
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.expenseCategory {
+  margin: 0;
+
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Remove button */
+
+.expenseRemove {
+  padding: 8px 14px;
+
+  background: transparent;
+  color: var(--negative);
+
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.expenseRemove:hover {
+  background: var(--negative);
+  color: white;
 }

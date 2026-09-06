@@ -1,0 +1,90 @@
+.addingForm {
+  width: 100%;
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.addingTitle {
+  margin: 0 0 8px;
+
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.addingInputName,
+.addingInputNumber,
+.addingDescription,
+.addingSelect {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #ffffff;
+
+  font-size: 15px;
+  color: #111827;
+  outline: none;
+
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.addingInputName:focus,
+.addingInputNumber:focus,
+.addingDescription:focus,
+.addingSelect:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.addingInputName::placeholder,
+.addingInputNumber::placeholder,
+.addingDescription::placeholder {
+  color: #9ca3af;
+}
+
+.addingDescription {
+  min-height: 90px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.addingSelect {
+  cursor: pointer;
+}
+
+.addingButton {
+  margin-top: 4px;
+  padding: 12px;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: #6366f1;
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.addingButton:hover {
+  background-color: #4f46e5;
+}
+
+.addingButton:active {
+  transform: translateY(1px);
+}

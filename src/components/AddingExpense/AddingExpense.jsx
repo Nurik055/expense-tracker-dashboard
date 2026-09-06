@@ -1,6 +1,7 @@
 import ListExpenses from "../ListExpenses/ListExpenses";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../AddingExpense/AddingExpense.css";
 
 function Filtering({ addExpense }) {
   const navigate = useNavigate();
@@ -27,47 +28,49 @@ function Filtering({ addExpense }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      
+    <form className="addingForm" onSubmit={handleSubmit}>
 
-      <h1>Add Expense</h1>
+  <h1 className="addingTitle">Add Expense</h1>
 
-      <input
-        className="addingInputName"
-        placeholder="Your expense"
-        onChange={(e) => setInputName(e.target.value)}
-      />
-      
+  <input
+    className="addingInputName"
+    placeholder="Your expense"
+    onChange={(e) => setInputName(e.target.value)}
+  />
 
-      <input
-        className="addingInputNumber"
-        type="number"
-        placeholder="$"
-        onChange={(e) => setInputAmount(e.target.value)}
-      />
+  <input
+    className="addingInputNumber"
+    type="number"
+    placeholder="$"
+    onChange={(e) => setInputAmount(e.target.value)}
+  />
 
-      <input
-        className="addingDescription"
-        placeholder="description"
-        onChange={(e) => setInputDescrip(e.target.value)}
-      />
+  <input
+    className="addingDescription"
+    placeholder="description"
+    onChange={(e) => setInputDescrip(e.target.value)}
+  />
 
-      <select value={category} onChange={(e) => setCategory(e.target.value)}>
-        <option value="Food">Food</option>
-        <option value="Transport">Transport</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Bills">Bills</option>
-        <option value="Other">Other</option>
-      </select>
+  <select
+    className="addingSelect"
+    value={category}
+    onChange={(e) => setCategory(e.target.value)}
+  >
+    <option value="Food">Food</option>
+    <option value="Transport">Transport</option>
+    <option value="Entertainment">Entertainment</option>
+    <option value="Bills">Bills</option>
+    <option value="Other">Other</option>
+  </select>
 
-      <button
-        className="addingButton"
-        type="submit"
-        
-      >
-        Add
-      </button>
-    </form>
+  <button
+    className="addingButton"
+    type="submit"
+  >
+    Add
+  </button>
+
+</form>
   );
 }
 

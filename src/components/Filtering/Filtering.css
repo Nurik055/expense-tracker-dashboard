@@ -1,7 +1,52 @@
 .filterContainer {
-    background-color: rgb(232, 255, 59);
-    height: 100px;
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 15px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto 0;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.searchContainer {
+  flex: 1;
+}
+
+.searchInput,
+.monthSelect,
+.categorySelect {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 13px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #ffffff;
+
+  font-size: 14px;
+  color: #111827;
+  outline: none;
+
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+.searchInput:focus,
+.monthSelect:focus,
+.categorySelect:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.monthFiltering,
+.filteringCategory {
+  width: 160px;
+}
+
+.monthSelect,
+.categorySelect {
+  cursor: pointer;
 }

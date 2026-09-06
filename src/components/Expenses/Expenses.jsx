@@ -31,12 +31,12 @@ function Expenses({ expense, setExpenses }) {
   }}></input> : <p>{expense.name}</p>
   return (
     <div className="expensesContainer">
-      <div onDoubleClick={changeExpense}> {theP}</div>
+      <div className="expenseChangeExpense" onDoubleClick={changeExpense}> {theP}</div>
  
-      <p>{expense.amount}</p>
-      <p>{expense.description}</p>
-      <p>{expense.category}</p>
-      <button onClick={removeExpense}>Remove</button>
+      <p className="expenseAmount">{expense.amount}</p>
+      <p className="expenseDescription">{expense.description}</p>
+      <p className="expenseCategory">{expense.category}</p>
+      <button className="expenseRemove" onClick={removeExpense}>Remove</button>
     </div>
   );
 }

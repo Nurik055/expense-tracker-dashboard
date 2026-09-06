@@ -2,6 +2,7 @@ import "../Home/Home.css";
 import ListExpenses from "../../components/ListExpenses/ListExpenses";
 import Cards from "../../components/Cards/Cards";
 import Filtering from "../../components/Filtering/Filtering";
+import Navbar from "../../components/Navbar/Navbar"
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -22,21 +23,13 @@ function Home({
 }) {
   return (
     <div>
+      <Navbar></Navbar>
       <Cards
         expenses={expenses}
         budget={budget}
         setBudget={setBudget}
       ></Cards>
-
-      <ListExpenses
-        expenses={expenses}
-        setExpenses={setExpenses}
-        expenseEqual={expenseEqual}
-      ></ListExpenses>
-      <Link to="/add-expense-filtering">
-        <button>Add Expense</button>
-      </Link>
-      <Filtering
+<Filtering
         expenses={expenses}
         userInput={userInput}
         setExpenses={setExpenses}
@@ -49,6 +42,13 @@ function Home({
         categoryFilter={categoryFilter}
         setCategoryFilter={setCategoryFilter}
       ></Filtering>
+      <ListExpenses
+        expenses={expenses}
+        setExpenses={setExpenses}
+        expenseEqual={expenseEqual}
+      ></ListExpenses>
+      
+      
     </div>
   );
 }
